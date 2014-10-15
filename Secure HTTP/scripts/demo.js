@@ -4,36 +4,47 @@
 
     DemoViewModel = kendo.data.ObservableObject.extend({
 
-        sendPlain: function () {
+        enablePinning: function () {
             if (!this.checkSimulator()) {
-                var email = {
-                    "to"      : "your-email-address@your-host.com",
-                    "from"    : "sendgrid-plugin@telerik.com",
-                    "subject" : "Mail from the SendGrid plugin (plain text)",
-                    "text"    : "This message is sent as plain text, so you <strong>should</strong> see some nasty HTML tags here :)"
-                };
-                window.sendgrid.send(
-                    email,
-                    function (msg) {alert("SUCCESS: " + JSON.stringify(msg))},
-                    function (msg) {alert("ERROR: "   + JSON.stringify(msg))}
+                window.cordovaHTTP.enableSSLPinning(
+                    true,
+                    function (msg) {alert("SUCCESS, you can now talk only to trusted endpoints")},
+                    function (msg) {alert("ERROR: "   + msg)}
                 );
             }
         },
 
-        sendHTML: function () {
+        disablePinning: function () {
             if (!this.checkSimulator()) {
-                var email = {
-                    "to"      : "your-email-address@your-host.com",
-                    "from"    : "sendgrid-plugin@telerik.com",
-                    "subject" : "Mail from the SendGrid plugin (HTML)",
-                    "text"    : "This is the backup text for non-HTML mailclients",
-                    "html"    : "<p>Grabbed this <strong>boldly</strong> from the DOM:</p> " + document.getElementById('emailcontent').innerHTML
-                };
-                window.sendgrid.send(
-                    email,
-                    function (msg) {alert("SUCCESS: " + JSON.stringify(msg))},
-                    function (msg) {alert("ERROR: "   + JSON.stringify(msg))}
+                window.cordovaHTTP.enableSSLPinning(
+                    false,
+                    function (msg) {alert("SUCCESS: you can now talk to any endpoint")},
+                    function (msg) {alert("ERROR: "   + msg)}
                 );
+            }
+        },
+
+        doTrustedGET: function () {
+            if (!this.checkSimulator()) {
+                window.cordovaHTTP.get(
+                    "https://cordova.apache.org", // we have a .cer file for this in www/certificates
+                    {}, // optional params
+                    {}, // optional headers
+                    function(msg) {alert("OK: " + msg)},
+                    function(msg) {alert("ERROR: " + msg)}
+                )
+            }
+        },
+
+        doUntrustedGET: function () {
+            if (!this.checkSimulator()) {
+                window.cordovaHTTP.get(
+                    "https://www.github.com", // we don't have a .cer file for this
+                    {}, // optional params
+                    {}, // optional headers
+                    function(msg) {alert("OK: " + msg)},
+                    function(msg) {alert("ERROR: " + msg)}
+                )
             }
         },
 

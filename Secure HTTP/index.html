@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -48,43 +48,23 @@
         data-model="app.demoService.viewModel">
 
         <div class="demo">
-            <h3 class="hassubtitle">TODO: everything below!!</h3>
+            <h3 class="hassubtitle">SSL Pinning</h3>
             <div class="subtitle">
-                DO NOT USE.. it's all placeholder stuff
+                When enabled, the endpoint of our HTTPS requests is checked for a valid certificate
+                according to the .cer files stored in our www/certificates folder.
             </div>
-            <button data-role="button" class="button" data-bind="click: sendPlain">Send Plain Text Email</button>
+            <button data-role="button" class="button" data-bind="click: enablePinning">Enable SSL Pinning</button>
+            <button data-role="button" class="button" data-bind="click: disablePinning">Disable SSL Pinning</button>
 
             <br/>
-            <h3 class="hassubtitle">Send HTML email</h3>
+            <h3 class="hassubtitle">HTTPS GET requests</h3>
             <div class="subtitle">
-                HTML mail can contain any custom tags you want.
-                If you want to add CSS, make sure you inline them as style attributes.
-                You can even grab parts of the DOM, like the table below. Click the button to see this in action.
+                Without this plugin your regular HTTP(S) requests are executed by the webview.
+                This plugin offers native connections which run in background threads.
+                If SSL Pinning is enabled, only connections to trusted endpoints are allowed.
             </div>
-            <button data-role="button" class="button" data-bind="click: sendHTML">Send HTML Email</button>
-
-            
-            <div id="emailcontent">
-                <table style="color: #DDD; background-color: #888" cellspacing="6" cellpadding="4">
-                    <tr>
-                        <td style="color:#222"><em>Mail app</em></td>
-                        <td style="color:#222"><em>Awesomeness %</em></td>
-                    </tr>
-                    <tr>
-                        <td>SendGrid</td>
-                        <td style="text-align:right">100</td>
-                    </tr>
-                    <tr>
-                        <td>Others</td>
-                        <td style="text-align:right">16</td>
-                    </tr>
-                </table>
-                <div style="font-size: 10px; color: #555; margin-top: 5px">
-                    <em>disclaimer: figures may be slightly off</em>
-                </div>
-                <br/>
-                <br/>
-            </div>
+            <button data-role="button" class="button" data-bind="click: doTrustedGET">Trusted GET request</button>
+            <button data-role="button" class="button" data-bind="click: doUntrustedGET">Untrusted GET request</button>
         </div>
         
     </div>
