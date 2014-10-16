@@ -8,7 +8,7 @@
             if (!this.checkSimulator()) {
                 window.cordovaHTTP.enableSSLPinning(
                     true,
-                    function (msg) {alert("SUCCESS, you can now talk only to trusted endpoints")},
+                    function (msg) {alert("SUCCESS, you can now talk only to trusted endpoints (on iOS this may take a few seconds to take effect)")},
                     function (msg) {alert("ERROR: "   + msg)}
                 );
             }
@@ -44,6 +44,29 @@
                     {}, // optional headers
                     function(msg) {alert("OK: " + msg)},
                     function(msg) {alert("ERROR: " + msg)}
+                )
+            }
+        },
+
+        setBasicAuthCredentials: function () {
+            if (!this.checkSimulator()) {
+                window.cordovaHTTP.useBasicAuth(
+                    "user",
+                    "passwd",
+                    function(msg) {alert("OK, basic auth headers set: " + msg)},
+                    function(msg) {alert("ERROR: " + msg)}
+                )
+            }
+        },
+        
+        requestBasicAuthProtectedResource: function () {
+            if (!this.checkSimulator()) {
+                window.cordovaHTTP.get(
+                    "http://httpbin.org/basic-auth/user/passwd",
+                    {}, // optional params
+                    {}, // optional headers
+                    function(msg) {alert("OK, basic auth resource responded: " + msg)},
+                    function(msg) {alert("ERROR, now press the 'Set global basic auth header' and test again")}
                 )
             }
         },

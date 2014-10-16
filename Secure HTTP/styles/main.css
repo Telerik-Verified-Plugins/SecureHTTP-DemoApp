@@ -16,8 +16,17 @@
 .demo .button {
     margin: 0 auto;
     margin-bottom: 14px;
+    width: 30%;
+}
+
+.demo .button.large {
     display: block;
     width: 80%;
+}
+
+.demo .buttons {
+    margin-top: 14px;
+    text-align: center;
 }
 
 h3.hassubtitle {
