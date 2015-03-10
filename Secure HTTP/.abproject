@@ -32,10 +32,9 @@
     "org.apache.cordova.vibration"
   ],
   "AndroidPermissions": [
-    "android.permission.VIBRATE",
+    "android.permission.ACCESS_NETWORK_STATE",
     "android.permission.READ_PHONE_STATE",
-    "android.permission.INTERNET",
-    "android.permission.ACCESS_NETWORK_STATE"
+    "android.permission.VIBRATE"
   ],
   "DeviceOrientations": [
     "Portrait",
@@ -48,5 +47,7 @@
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
   ],
-  "Framework": "Cordova"
+  "Framework": "Cordova",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8PackageIdentityName": "1234Telerik.com.telerik.plugindemo.securehttp"
 }
