@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="com.synconset.cordovaHTTP"
-  version="0.1.4">
+  version="0.1.6">
 
     <name>SSL Pinning</name>
  
@@ -37,34 +37,7 @@
         <header-file src="src/ios/TextResponseSerializer.h" />
         <source-file src="src/ios/TextResponseSerializer.m" />
 
-        <header-file src="src/ios/AFNetworking/AFHTTPRequestOperation.h" />
-        <source-file src="src/ios/AFNetworking/AFHTTPRequestOperation.m" />
-
-        <header-file src="src/ios/AFNetworking/AFHTTPRequestOperationManager.h" />
-        <source-file src="src/ios/AFNetworking/AFHTTPRequestOperationManager.m" />
-
-        <header-file src="src/ios/AFNetworking/AFHTTPSessionManager.h" />
-        <source-file src="src/ios/AFNetworking/AFHTTPSessionManager.m" />
-
-        <header-file src="src/ios/AFNetworking/AFNetworking.h" />
-
-        <header-file src="src/ios/AFNetworking/AFNetworkReachabilityManager.h" />
-        <source-file src="src/ios/AFNetworking/AFNetworkReachabilityManager.m" />
-
-        <header-file src="src/ios/AFNetworking/AFSecurityPolicy.h" />
-        <source-file src="src/ios/AFNetworking/AFSecurityPolicy.m" />
-
-        <header-file src="src/ios/AFNetworking/AFURLConnectionOperation.h" />
-        <source-file src="src/ios/AFNetworking/AFURLConnectionOperation.m" />
-
-        <header-file src="src/ios/AFNetworking/AFURLRequestSerialization.h" />
-        <source-file src="src/ios/AFNetworking/AFURLRequestSerialization.m" />
-
-        <header-file src="src/ios/AFNetworking/AFURLResponseSerialization.h" />
-        <source-file src="src/ios/AFNetworking/AFURLResponseSerialization.m" />
-
-        <header-file src="src/ios/AFNetworking/AFURLSessionManager.h" />
-        <source-file src="src/ios/AFNetworking/AFURLSessionManager.m" />
+        <dependency id="com.telerik.afnetworking" />
 
         <framework src="SystemConfiguration.framework" />
         <framework src="Security.framework" />
