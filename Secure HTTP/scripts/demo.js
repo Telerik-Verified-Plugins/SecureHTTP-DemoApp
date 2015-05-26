@@ -31,7 +31,7 @@
                     {}, // optional params
                     {}, // optional headers
                     function(msg) {alert("OK: " + msg)},
-                    function(msg) {alert("ERROR: " + msg)}
+                    function(msg) {alert("ERROR: " + JSON.stringify(msg))}
                 )
             }
         },
