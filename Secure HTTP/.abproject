@@ -20,16 +20,16 @@
   "WP8PublisherID": "{c87036ae-987d-4f4f-83b9-e0d6b342670c}",
   "WP8ProductID": "{b3d6b9dd-d1f4-4db9-a07d-b7e4088bb60e}",
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "FrameworkVersion": "3.7.0",
+  "FrameworkVersion": "4.0.0",
   "CorePlugins": [
-    "org.apache.cordova.console",
-    "org.apache.cordova.device",
-    "org.apache.cordova.dialogs",
-    "org.apache.cordova.file",
-    "org.apache.cordova.network-information",
-    "org.apache.cordova.splashscreen",
-    "org.apache.cordova.statusbar",
-    "org.apache.cordova.vibration"
+    "cordova-plugin-console",
+    "cordova-plugin-crosswalk-webview@1.2.0",
+    "cordova-plugin-device",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-vibration"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_NETWORK_STATE",
@@ -40,7 +40,7 @@
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "false",
+  "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",
   "WP8SupportedResolutions": [
     "ID_RESOLUTION_WVGA",
@@ -49,5 +49,6 @@
   ],
   "Framework": "Cordova",
   "WP8WindowsPublisherName": "CN=Telerik",
-  "WP8PackageIdentityName": "1234Telerik.com.telerik.plugindemo.securehttp"
+  "WP8PackageIdentityName": "1234Telerik.com.telerik.plugindemo.securehttp",
+  "CordovaPluginVariables": {}
 }
