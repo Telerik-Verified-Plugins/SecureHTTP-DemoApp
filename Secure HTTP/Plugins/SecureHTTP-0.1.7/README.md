@@ -55,7 +55,7 @@ Set a header for all future requests.  Takes a header and a value.
     });
 
 ### enableSSLPinning
-Enable or disable SSL pinning.  To use SSL pinning you must include at least one .cer SSL certificate in your app project.  For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level).  For android include your certificate in your project's platforms/android/assets folder.  In both cases all .cer files found will be loaded automatically.  If you only have a .pem certificate see this [stackoverflow answer](http://stackoverflow.com/a/16583429/3182729).  You want to convert it to a DER encoded certificate with a .cer extension.
+Enable or disable SSL pinning.  To use SSL pinning you must include at least one .cer SSL certificate in your app project.  You can pin to your server certificate or to one of the issuing CA certificates. For ios include your certificate in the root level of your bundle (just add the .cer file to your project/target at the root level).  For android include your certificate in your project's platforms/android/assets folder.  In both cases all .cer files found will be loaded automatically.  If you only have a .pem certificate see this [stackoverflow answer](http://stackoverflow.com/a/16583429/3182729).  You want to convert it to a DER encoded certificate with a .cer extension.
 
 As an alternative, you can store your .cer files in the www/certificates folder.
 
@@ -87,7 +87,7 @@ The success function receives a response object with 2 properties: status and da
     
 Most apis will return JSON meaning you'll want to parse the data like in the example below:
 
-    cordovaHTTP.post("https://google.com/, {
+    cordovaHTTP.post("https://google.com/", {
         id: 12,
         message: "test"
     }, { Authorization: "OAuth2: token" }, function(response) {
@@ -120,7 +120,7 @@ The error function receives a response object with 2 properties: status and erro
 ### get
 Execute a GET request.  Takes a URL, parameters, and headers.  See the [post](#post) documentation for details on what is returned on success and failure.
 
-    cordovaHTTP.get("https://google.com/, {
+    cordovaHTTP.get("https://google.com/", {
         id: 12,
         message: "test"
     }, { Authorization: "OAuth2: token" }, function(response) {
@@ -132,7 +132,7 @@ Execute a GET request.  Takes a URL, parameters, and headers.  See the [post](#p
 ### uploadFile
 Uploads a file saved on the device.  Takes a URL, parameters, headers, filePath, and the name of the parameter to pass the file along as.  See the [post](#post) documentation for details on what is returned on success and failure.
 
-    cordovaHTTP.uploadFile("https://google.com/, {
+    cordovaHTTP.uploadFile("https://google.com/", {
         id: 12,
         message: "test"
     }, { Authorization: "OAuth2: token" }, "file:///somepicture.jpg", "picture", function(response) {
@@ -144,7 +144,7 @@ Uploads a file saved on the device.  Takes a URL, parameters, headers, filePath,
 ### downloadFile
 Downloads a file and saves it to the device.  Takes a URL, parameters, headers, and a filePath.  See [post](#post) documentation for details on what is returned on failure.  On success this function returns a cordova [FileEntry object](http://cordova.apache.org/docs/en/3.3.0/cordova_file_file.md.html#FileEntry).
 
-    cordovaHTTP.downloadFile("https://google.com/, {
+    cordovaHTTP.downloadFile("https://google.com/", {
         id: 12,
         message: "test"
     }, { Authorization: "OAuth2: token" }, "file:///somepicture.jpg", function(entry) {
@@ -166,6 +166,17 @@ This plugin utilizes some awesome open source networking libraries.  These are b
  - Android - [http-request](https://github.com/kevinsawicki/http-request)
 
 We made a few modifications to http-request.  They can be found in a separate repo here: https://github.com/wymsee/http-request
+
+## Limitations
+
+This plugin isn't equivalent to using XMLHttpRequest or Ajax calls in Javascript.
+For instance, the following features are currently not supported:
+
+- cookies support (a cookie set by a request isn't sent in subsequent requests)
+- read content of error responses (only the HTTP status code and message are returned)
+- read returned HTTP headers (e.g. in case security tokens are returned as headers)
+
+Take this into account when using this plugin into your application.
 
 ## License
 
