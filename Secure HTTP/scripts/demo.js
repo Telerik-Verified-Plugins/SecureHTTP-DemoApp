@@ -27,8 +27,7 @@
         doTrustedGET: function () {
             if (!this.checkSimulator()) {
                 window.cordovaHTTP.get(
-                  "https://services.progress.ie/_cumobileactivationTWO.publicservice/cumobileactivationpublic.svc/TestGetMethod", // we have a .cer file for this in www/certificates
-//                  "https://cordova.apache.org", // we have a .cer file for this in www/certificates
+                  "https://www.yahoo.com", // we have a .cer file for this in www/certificates
                     {}, // optional params
                     {}, // optional headers
                     function(msg) {alert("OK: " + msg)},
@@ -40,8 +39,7 @@
         doUntrustedGET: function () {
             if (!this.checkSimulator()) {
                 window.cordovaHTTP.get(
-	                  "https://www.cuonlinebanking.com/cumobileactivation.publicservice/cumobileactivationpublic.svc/TestGetMethod", // we don't have one for this
-  //                  "https://www.github.com", // we don't have a .cer file for this
+	                  "https://www.microsoft.com", // we don't have a .cer file for this
                     {}, // optional params
                     {}, // optional headers
                     function(msg) {alert("OK: " + msg)},
