@@ -55,21 +55,17 @@
                 When enabled, the endpoint of our HTTPS requests is checked for a valid certificate
                 according to the .cer files stored in the www/certificates folder.
             </div>
-            <div class="buttons">
-                <button data-role="button" class="button" data-bind="click: enablePinning">Pinning on</button>
-                <button data-role="button" class="button" data-bind="click: disablePinning">Pinning off</button>
-            </div>
+            <button data-role="button" class="button large" data-bind="click: enablePinning"><strong>SSL Pinning ON</strong><br/>allows only https://ing.nl</button>
+            <button data-role="button" class="button large" data-bind="click: disablePinning"><strong>SSL Pinning OFF</strong><br/>allows everything</button>
 
             <h3 class="hassubtitle">HTTPS GET requests</h3>
             <div class="subtitle">
-                Normally requests are executed by the webview.
-                This plugin offers native connections which run in background threads.
-                If SSL Pinning is enabled, only connections to trusted endpoints are allowed.
+              AJAX requests are usually executed by the webview,
+              but this plugin offers native connections which run in background threads.
+              If SSL Pinning is enabled, only connections to trusted endpoints are allowed.
             </div>
-            <div class="buttons">
-                <button data-role="button" class="button" data-bind="click: doTrustedGET">Trusted</button>
-                <button data-role="button" class="button" data-bind="click: doUntrustedGET">Untrusted</button>
-            </div>
+            <button data-role="button" class="button large" data-bind="click: doTrustedGET">Trusted (https://ing.nl)</button>
+            <button data-role="button" class="button large" data-bind="click: doUntrustedGET">Untrusted (https://microsoft.com)</button>
 
             <h3 class="hassubtitle">Basic Authentication</h3>
             <div class="subtitle">

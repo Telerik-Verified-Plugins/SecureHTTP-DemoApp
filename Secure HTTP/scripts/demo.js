@@ -8,7 +8,7 @@
             if (!this.checkSimulator()) {
                 window.cordovaHTTP.enableSSLPinning(
                     true,
-                    function (msg) {alert("SUCCESS, you can now talk only to trusted endpoints (on iOS this may take a few seconds to take effect)")},
+                    function (msg) {alert("SUCCESS, you can now talk only to endpoints of which you have a certificate bundled")},
                     function (msg) {alert("ERROR: "   + msg)}
                 );
             }
@@ -27,11 +27,11 @@
         doTrustedGET: function () {
             if (!this.checkSimulator()) {
                 window.cordovaHTTP.get(
-                  "https://www.yahoo.com", // we have a .cer file for this in www/certificates
+                  "https://ing.nl", // we have a .cer file for this in www/certificates
                     {}, // optional params
                     {}, // optional headers
-                    function(msg) {alert("OK: " + msg)},
-                    function(msg) {alert("ERROR: " + JSON.stringify(msg))}
+                    function(msg) {alert("OK, Connection allowed")},
+                    function(msg) {alert("ERROR, Connection denied " + JSON.stringify(msg))}
                 )
             }
         },
@@ -42,8 +42,8 @@
 	                  "https://www.microsoft.com", // we don't have a .cer file for this
                     {}, // optional params
                     {}, // optional headers
-                    function(msg) {alert("OK: " + msg)},
-                    function(msg) {alert("ERROR: " + msg)}
+                    function(msg) {alert("OK, Connection allowed")},
+                    function(msg) {alert("ERROR, Connection denied " + JSON.stringify(msg))}
                 )
             }
         },
